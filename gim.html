@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tebak gambar</title>
+</head>
+<style type="text/css">
+
+    * {
+        box-sizing: border-box;  
+      } 
+    
+      body {
+        background-color: rgb(31, 30, 30);
+        background-image: url(https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiqzMTPGEypll0f463X13l8g36xhPAIEf7JCKqPOYRTkyJAN9RqGpKzSmRCTqsEOnsPDGfRFNK3WVmx4Vshj8E62UH9OO5i0k0arbqGbJaN8dw5dopNmZXfM9b__ftJMcfNKCf3E6Rf3k5KNmpe8UmOwhnFHqsC0LTl6KCUU8Crl6JAWlB6uJJ5hnGafg/s3000/2.jpg);
+        background-size: 100%;
+        
+      }
+      
+      img {
+        border-radius: 20px;
+        height: 300px;
+      }
+      
+      .nyawa {
+        height: 60px;
+        position: fixed;
+      }
+      
+        .halNotif {  
+          text-align: center;
+    
+        }
+    
+        .halI {  
+          text-align: center; 
+        }
+        .hal {  
+            text-align: center; 
+            padding-top: 20px;
+      
+                     
+          }
+
+        .halU {  
+            text-align: center;
+            padding-top: 400px;
+            position: relative;   
+         
+          }
+  
+
+        .bg {
+            position: fixed;
+            text-align: center;
+            
+        }
+
+        .bg img {
+            border-radius: 0;
+            height: 100%;
+            width: 100%;
+        }
+       
+      
+      
+        .notif {
+          position: fixed;
+          background-color: transparent;
+          width: 100%;
+          height: 100%;
+          background-color: rgba(0, 0, 0, 0.568);
+          padding-top: 100px;
+        }
+      
+        .isi {
+          
+          display: inline-block;
+          border: 2px solid rgb(211, 222, 139);
+          color: white;
+          text-transform: uppercase;
+          border-radius: 20px;
+          background: rgb(26, 37, 52);
+          padding: 10px;
+          top: 100px;
+          left: 80px;
+          width: 800px;
+          height: 400px;
+        }
+    
+        .tap {
+          text-transform: lowercase;
+        }
+      
+       .tap p {
+          font-size: 0.7rem;
+          color: gray;
+       }
+      
+    
+        .buttonfull {
+          display: inline-block;
+          position: fixed;
+          background: transparent;
+          height: 100%;
+          width: 100%;
+          left: 0;
+          right: 0;
+        }
+    
+        .isi p {
+          font-size: 2rem;
+        }
+      
+        .kunci {
+                                             font-size: 0rem; 
+          letter-spacing: .1rem;
+          color: rgba(211, 222, 139, 0.027);
+        }
+
+        .kunci::selection {
+            color: #072944;
+        }
+      
+        .title {
+          font-size: 2rem; 
+          letter-spacing: .1rem;
+          color: rgb(211, 222, 139);
+        }
+
+        
+        .list {
+            font-size: 1.5rem; 
+            letter-spacing: .1rem;
+            color: rgb(211, 222, 139);
+          }
+    
+        .text {
+          font-size: 2rem; 
+          letter-spacing: .1rem;
+          color: white;
+        }
+    
+        .score {
+            font-size: 3rem; 
+            letter-spacing: .1rem;
+            color: rgb(211, 222, 139);
+            padding-left: 30px;
+          }
+      
+          .button {
+            display: inline-block;
+            padding: 10px 30px;
+            color: white;
+            background-color: rgb(22, 32, 45);
+            border-radius: 20px;
+            border: 2px solid rgb(211, 222, 139);
+            font-size: 2rem;
+            text-transform: uppercase;
+            letter-spacing: .1rem;
+            margin-top: 30px;
+            transition: .3s ease;
+            transition-property: background-color, color;
+          }
+        
+          
+        
+          .button:hover {
+            color: black;
+            background-color: rgb(211, 222, 139);
+          }
+    
+    
+          .buttonR {
+            display: inline-block;
+            padding: 10px 30px;
+            color: white;
+            background-color: rgb(22, 32, 45);
+            border-radius: 20px;
+            border: 2px solid rgb(211, 222, 139);
+            font-size: 2rem;
+            text-transform: uppercase;
+            transition: .3s ease;
+            transition-property: background-color, color;
+          }
+        
+          
+        
+          .buttonR:hover {
+            color: black;
+            background-color: rgb(211, 222, 139);
+          }
+    
+      
+        .input-box input {
+          display: inline-block;
+          padding: 10px 30px;
+          color: white;
+          background-color: transparent;
+          border-radius: 20px;
+          border: 2px solid rgb(211, 222, 139);
+          font-size: 2rem;
+          letter-spacing: .1rem;
+          margin-top: 30px;
+          transition: .3s ease;
+          transition-property: background-color, color;
+        }
+        .input-box input:hover {
+          color: black;
+          background-color: rgb(211, 222, 139);
+        }
+      
+        .box-salah {
+          display: inline-block;
+          background: transparent;
+          width: 400px;
+          
+        }
+      
+        .box-salah p {
+          font-size: 1.5rem;
+          text-align: left;
+          color: indianred;
+        }
+      
+      
+        div.header {
+          width: 100%;
+          position: fixed;
+        }
+    
+        .img-content {
+            height: 220px;
+        }
+    
+        .salah-content {
+            height: 150px;
+        }
+
+        .info {
+            font-size: 3rem;
+            letter-spacing: .1rem;
+            color: white;
+        }
+
+</style>
+<body>
+
+<!--header-->
+    <div class="header" id="header" style="display: none;">
+        <ul>
+            <a type="button" class="buttonR" onclick="restart('gim.html')">restart  </a>
+            <a id="score" class="score">0</a>
+            <img class="nyawa" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjqwx35O9OUR6ZVQaFd1zzab9bcgX2e32TxBXi-p9veaYQM4hwBP6iW8mSUMs5-Ed2xJTC-amTp6HLMdLqSiUavYj471Q9kHmPrqjpFASmXt7SjcEEukjLk9V9hDBnC0JYF_sWzXInYPGXI4WrNfgfvdWVFFlbsE0GS3HPhbBacBlf7N6G-CooNbURixQ/s501/hati.png" alt="">
+        </ul>
+
+    </div>
+
+<!--notif-->
+<div class="halNotif">
+
+    <!--notif salah-->
+    <div class="notif" id="notifsalah" style="display: none;">
+        <a type="button" onclick="notifsalah()" class="buttonfull"><span></span></a>
+        <div class="isi">
+            <p>jawaban anda salah</p>
+            <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjQnix5KI-MP-y0Jn1PmFhFWjf-z9RmCPBoX_QyP040Jsu6Cg0CAa6rjfZZPX9LaZpoUfIkceONIMxtCVl5hO2hwb9oSDGWp6NwivOV1ln_P5JtPHr6SbiUxvhAzHHC2UOPqRtnsiQ0rhV2R5ZiIYZyImhlA4k41bUYHQHxIQDr1HJlyhwwy4nbws3Q0g/s637/checkRed.png" alt="" class="salah-content">
+            <div class="tap">
+                <p>sentuh untuk menutup</p>
+            </div>
+        </div>
+    </div>
+    <!--notif benar-->
+    <div class="notif" id="notifbenar" style="display: none;">
+        <a type="button" onclick="notifbenar()" class="buttonfull"><span></span></a>
+        <div class="isi">
+            <p>jawaban anda benar</p>
+            <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjg6O7F7KyzpLAXD_9yxNBvBtG8_ufh1FKONhMaJSH-l15d24mxrX4PYZB3ZQ4oRJxHEjix5id4R-TkXaZ4RIyTd-1IJUOvJGHTV8bqhPPKHDqzh7I5OV8ZtD1wZu-w3OV1ZO1QSJfdyxM1jrZdiwjYRkK7da95e_OAyQuPZm23XeEn8fur8cIhSltGiA/s714/checkGreen.png" alt="" class="salah-content">
+            <div class="tap">
+                <p>sentuh untuk menutup</p>
+            </div>
+        </div>
+    </div>
+    <!--notif kalah-->
+    <div class="notif" id="notifkalah" style="display: none;">
+        <div class="isi">
+            <p>anda kalah</p>
+            <div class="tap">
+                <p>harus mulai dari awal</p>
+            </div>
+            <a type="button" onclick="notifkalah('gim.html')" class="button">ulang<span></span></a>
+        </div>
+    </div>
+
+</div>
+
+        <!--halaman utama-->
+        <div id="utama" style="display: block;">
+            <div class="bg">
+                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhwM_Pr36CYw22iz6p-GXjHLmnMpS_JpRq1KHDTUm6QB6tQPpG-ox_58IYXf7dhc-5Vit5G0i-SJ75Ab8wBxtkpSPYHj3TDNE8sIg_XdA-kd_DOzLvf9Y0F6kilsj5dFEGYqaPVI3rdtMcCmTeq0pVF_oNESbnqLEELRBXTJn-nVDnOc-bjA_APT39PDA/s3000/1.jpg" alt="">
+            </div>
+            <div class="halU">
+                <div>
+                    <a type="button" onclick="cek0()" class="button">mulai<span></span></a>
+               
+                    <a type="button" onclick="info()" class="button">info<span></span></a>
+                </div>
+            </div>
+        </div>
+
+        <!--info-->
+        <div id="info" style="display: none;">
+            <div class="halI">
+                <div class="info">
+                    <p>info</p>
+                </div>
+                <div class="list">
+                    <p>X PPLG 3 - kelompok 7</p>
+                    <p>Muhammad Bintang Febrian Rusyanto</p>
+                    <p>Rifai Hari Nugroho</p>
+                    <p>Ricky Putra Irawansyah</p>
+                    <p>Dewi Rizky Amalia</p>
+                    <p>Khansa Azzahra Gandi</p>
+                </div>
+                <a type="button" onclick="back()" class="button">kembali<span></span></a>
+            </div>
+        </div>
+        
+        <!--soal 1-->
+        <div id="soal1" style="display: none;">
+            
+            <div class="hal">
+                <div class="title">
+                    <p>soal nomor 1</p>
+                </div>
+                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgxox3Daeu-xNb-u1ccde5tclSTYGkbe1cY6IWIGgoz4pZ1ECb5_ZKMOW-808IYN3MEBZW-FXGdRoUFCeeSD0xWAotA74FgI1oSNLBHlPeSr31JJVf0fHvXyoqQPi5QmgFSpPHP-unExxYCzG-7dU33kxy5Q94cQCCgh0Pp6Q40OL6xmcoOnJ_s_QE06Q/s650/soal%201.jpeg" alt="">
+                <label id="kunci1" class="kunci" style="display: none;">_ _ _ _ _ - _ _ _ _</label>
+                <div class="input-box">
+                    <input id="jawaban1" type="text">
+                </div>
+                <div class="box-salah">
+                    <p id="alert1" style="display: none;">jawaban anda salah</p>
+                </div>
+                <div>
+                    <a type="button" onclick="cek1()" class="button">cek jawaban<span></span></a>
+                </div>
+            </div>
+        </div>
+        
+        <!--soal 2-->
+        <div id="soal2" style="display: none;">
+            <div class="hal">
+                <div class="title">
+                    <p>soal nomor 2</p>
+                </div>
+                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiOjHFJzSSHGeqSCoKe7FMSw9nm4CE08G9g3MD6N6__SDOKXxP7adtx-IKBs7GN9E8dOqdJ-P51p_kySTpJEnXqUAPQy6HQes7qcYLQhJzF2ek2z6S-UTE563FRjeaefLKYDvWDaBvxLlRl91EIGFYSYudOmAaHQgLKLNkMSPd0EV6Ks0SiGlRT-7W_Ag/s865/soal%202.jpeg" alt="">
+                <label id="kunci2" class="kunci" style="display: none;">_ _ _ _ _ _ _ _ _</label>
+                <div class="input-box">
+                    <input id="jawaban2" type="text">
+                </div>
+                <div class="box-salah">
+                    <p id="alert2" style="display: none;">jawaban anda salah</p>
+                </div>
+                <div>
+                    <a type="button" onclick="cek2()" class="button">cek jawaban<span></span></a>
+                </div>
+            </div>
+        </div>
+
+        <!--soal 3-->
+        <div id="soal3" style="display: none;">
+            <div class="hal">
+                <div class="title">
+                    <p>soal nomor 3</p>
+                </div>
+                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjFNNGuYLqmgro4LsR_SDQaiPexsdpXtQsji0CV0VrWqu-nDnMR4SPktc5yi0XvoL9-J4OYHv0Irx-3E3ryMar72QTqIIcE03004VXqc54C0sLN8YTZLtEOC2w1QtSIZJB2dLUX_LA1y2wNVHdjLnbG_KQx0yGFwtZWmo8e3S9UuYQEQ0EHAQKsw2Kycw/s867/soal%203.jpeg" alt="">
+                <label id="kunci3" class="kunci" style="display: none;">_ _ _ _ _ _ - _ _ _ _ _ _ _ _ _</label>
+                <div class="input-box">
+                    <input id="jawaban3" type="text">
+                </div>
+                <div class="box-salah">
+                    <p id="alert3" style="display: none;">jawaban anda salah</p>
+                </div>
+                <div>
+                    <a type="button" onclick="cek3()" class="button">cek jawaban<span></span></a>
+                </div>
+            </div>
+        </div>
+
+        <!--soal 4-->
+        <div id="soal4" style="display: none;">
+            <div class="hal">
+                <div class="title">
+                    <p>soal nomor 4</p>
+                </div>
+                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhDy0QahAcq9wqEBAq1NDKqo4yh2gXsYwp_IQKpxZQxymSxNyhGl0Shb1195LmFM1iC329dymwHu7u8dLjaLtSW4akHP5Q5fNtQKvUryxPkgjXSE8jzKsMFAD6WQUv_-BUNkydeW8GSGabMPRa631ARxHwoSGTGWsScnigTUXBzR4hRlsmuWIfUptMFYQ/s885/soal%204.jpeg" alt="">
+                <label id="kunci4" class="kunci" style="display: none;">_ _ _ _ _ _ _ _ - _ _ _ _ _ _ - _ _ _ _</label>
+                <div class="input-box">
+                    <input id="jawaban4" type="text">
+                </div>
+                <div class="box-salah">
+                    <p id="alert4" style="display: none;">jawaban anda salah</p>
+                </div>
+                <div>
+                    <a type="button" onclick="cek4()" class="button">cek jawaban<span></span></a>
+                </div>
+            </div>
+        </div>
+
+        <!--soal 5-->
+        <div id="soal5" style="display: none;">
+            <div class="hal">
+                <div class="title">
+                    <p>soal nomor 5</p>
+                </div>
+                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhvAhQhgc15STfFgOrhgQeYEqRQteldOWhv4CW1Eur8Be5ZLWQJl-CKBPPVDCsO0YQ30gTcZw5lWZiiYFbWGlzjE4akpel9aKN3oZc2kFzNQjf5ks5kSTKrl-MKdjsGExhPUDJBgxi_TDxfaQxG-MP-6-P4hAbQS67lOwTY5Uk804M8I5rYXiEU1LpXBw/s813/soal%205.jpeg" alt="">
+                <label id="kunci5" class="kunci" style="display: none;">_ _ _ _ _ _ _ _ - _ _ _ _ _</label>
+                <div class="input-box">
+                    <input id="jawaban5" type="text">
+                </div>
+                <div class="box-salah">
+                    <p id="alert5" style="display: none;">jawaban anda salah</p>
+                </div>
+                <div>
+                    <a type="button" onclick="cek5()" class="button">cek jawaban<span></span></a>
+                </div>
+            </div>
+        </div>
+
+        <!--soal 6-->
+        <div id="soal6" style="display: none;">
+            <div class="hal">
+                <div class="title">
+                    <p>soal nomor 6</p>
+                </div>
+                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgVfpM2E11CLPOSOKe05GCfKPdbZ_jC1Ok9Q2YyzpfAvHVAaS18tjDQzUIdo4_XYyADEHvsFOmXRVdL_1TY9fvCQXrf__WIbOD78DKDMIp7XJfjC_Ab1WK09Mtm-qt8_WZzkAlm6nD_NKrjBonoPYW7U-M0Vd3MW4Si7E47OzPhwssXYml3YjG_2xgYfQ/s662/soal%206.jpeg" alt="">
+                <label id="kunci6" class="kunci" style="display: none;">_ _ _ _ _ _ _ _ - _ _ _ _ _</label>
+                <div class="input-box">
+                    <input id="jawaban6" type="text">
+                </div>
+                <div class="box-salah">
+                    <p id="alert6" style="display: none;">jawaban anda salah</p>
+                </div>
+                <div>
+                    <a type="button" onclick="cek6()" class="button">cek jawaban<span></span></a>
+                </div>
+            </div>
+        </div>
+        
+        <!--soal 7-->
+        <div id="soal7" style="display: none;">
+            <div class="hal">
+                <div class="title">
+                    <p>soal nomor 7</p>
+                </div>
+                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjpn-YgY-5shq-GxmYlfr9dlt4qj5N_CBmI4ScBBcMrOlcsmzdPaCULeZ1NyzUbbBXQf_KKy0bbdigYUr3DGIfhxvg5u2rAQhH2CfAp6Wx7nl22LqTjFqjWpLFcb8jyliUyDPleFUZt3ta4JPcn9nxpyQS0NjThIo5CCXKYyZHoQ08iJg6xTqVqMbQQQQ/s871/soal%207.jpeg" alt="">
+                <label id="kunci7" class="kunci" style="display: none;">_ _ _ _ _ _ _ _ - _ _ _ _ _ _ _ _ _</label>
+                <div class="input-box">
+                    <input id="jawaban7" type="text">
+                </div>
+                <div class="box-salah">
+                    <p id="alert7" style="display: none;">jawaban anda salah</p>
+                </div>
+                <div>
+                    <a type="button" onclick="cek7()" class="button">cek jawaban<span></span></a>
+                </div>
+            </div>
+        </div>
+
+         <!--soal 8-->
+         <div id="soal8" style="display: none;">
+            <div class="hal">
+                <div class="title">
+                    <p>soal nomor 8</p>
+                </div>
+                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhkHfZRWIMZTeVIJPpS-2nIVSDDi1ZohIhRcHvrnWmhpNLqBIT2jiAssaEwVcbFVSwzlv86T_7xShMgaB34mdoV5SrGl_bRJWBpEjExnIs8rwXuiAIPnssCqZdcpmlBCqat4WiyBseYzobJm4h0Yv39bmLkjM6dk9t7oqRMpl1UpIezndAzfVGxKMLnlw/s808/soal%208.jpeg" alt="">
+                <label id="kunci8" class="kunci" style="display: none;">_ _ _ _ _ - _ _ _ _ _</label>
+                <div class="input-box">
+                    <input id="jawaban8" type="text">
+                </div>
+                <div class="box-salah">
+                    <p id="alert8" style="display: none;">jawaban anda salah</p>
+                </div>
+                <div>
+                    <a type="button" onclick="cek8()" class="button">cek jawaban<span></span></a>
+                </div>
+            </div>
+        </div>
+
+         <!--soal 9-->
+         <div id="soal9" style="display: none;">
+            <div class="hal">
+                <div class="title">
+                    <p>soal nomor 9</p>
+                </div>
+                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg7gPhOuGVE61uyycGLTHlxnWdoI_OhtsRgkq_iA99rL5W-Ur99cs51KoQr1wXXkaQ3D5y0PAT39y2uKGotmqCxJSiegoD0JzcqTViDSRiXU2GF3gaYfR8MtUh7odLe7EVbfVnLT48UV1IZnDVBIpq0X9kLIozNYIiFlmcQrvM_WTKlrFmHLp0G8DXheA/s741/soal%209.jpeg" alt="">
+                <label id="kunci9" class="kunci" style="display: none;">_ _ _ _ _ - _ _ _ _</label>
+                <div class="input-box">
+                    <input id="jawaban9" type="text">
+                </div>
+                <div class="box-salah">
+                    <p id="alert9" style="display: none;">jawaban anda salah</p>
+                </div>
+                <div>
+                    <a type="button" onclick="cek9()" class="button">cek jawaban<span></span></a>
+                </div>
+            </div>
+        </div>
+
+         <!--soal 10-->
+         <div id="soal10" style="display: none;">
+            <div class="hal">
+                <div class="title">
+                    <p>soal nomor 10</p>
+                </div>
+                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEikzsMshqWzyn2nsh7yQDKivma4jKD7JprCb5zpdgCgCDUjJERpL8c-QXqXcwdeIxx5af2h9MrYhFwWqvYnZkNZrzegWIdWWcp1Oouq_74zYH8iDWH9-5OpCtQCkloFBLTliniHc2uJm3VigkVpyN6iD-CkdhBgrLkdJc7GWU_gUyv8X-vKMwQRah_pPg/s884/soal%2010.jpeg" alt="">
+                <label id="kunci10" class="kunci" style="display: none;">_ _ _ _ - _ _ _ _ - _ _ _ _ _ _ _</label>
+                <div class="input-box">
+                    <input id="jawaban10" type="text">
+                </div>
+                <div class="box-salah">
+                    <p id="alert10" style="display: none;">jawaban anda salah</p>
+                </div>
+                <div>
+                    <a type="button" onclick="cek10()" class="button">cek jawaban<span></span></a>
+                </div>
+            </div>
+        </div>
+
+        <!--menang-->
+        <div id="menang" style="display: none;">
+            <div class="hal">
+                <div class="title">
+                    <p>menang</p>
+                </div>
+                <div class="text">
+                    <p>anda menyelesaikan semua soal</p>            
+                </div>
+                <div class="list">
+                    <p>kelompok 7</p>
+                    <p>Muhammad Bintang Febrian Rusyanto</p>
+                    <p>Rifai Hari Nugroho</p>
+                    <p>Ricky Putra Irawansyah</p>
+                    <p>Dewi Rizky Amalia</p>
+                    <p>Khansa Azzahra Gandi</p>
+                </div>
+            </div>
+        </div>
+       
+</body>
+
+<script type="text/javascript">
+
+    var score = 0;
+    var scoretampil = document.getElementById("score");
+    
+    function notifsalah() {
+        document.getElementById("notifsalah").style.display = "none"
+        
+    }
+
+    function notifbenar() {
+        document.getElementById("notifbenar").style.display = "none"
+        
+    }
+
+
+    function notifkalah(url) {
+        window.location = url
+    }
+
+
+    function restart(url) {
+        window.location = url
+    }
+
+   
+    //mulai//
+    function cek0() {
+        document.getElementById("utama").style.display = "none"
+        document.getElementById("soal1").style.display = "block"
+        document.getElementById("header").style.display = "block"
+         score = 3
+        document.getElementById("score").innerHTML = score
+        
+    
+    }
+
+    //info//
+    function info() {
+        document.getElementById("utama").style.display = "none"
+        document.getElementById("info").style.display = "block"
+    }
+
+    function back() {
+        document.getElementById("utama").style.display = "block"
+        document.getElementById("info").style.display = "none"
+    }
+
+    //soal 1//
+    function cek1() {
+        var jawaban1 = document.getElementById("jawaban1").value;
+        var jawabanbenar1 = '\x74\x61\x6d\x61\x6e\x20\x72\x75\x73\x61';
+        
+
+        if (jawaban1 == jawabanbenar1) {
+            document.getElementById("notifbenar").style.display = "block"
+            document.getElementById("soal1").style.display = "none"
+            document.getElementById("soal2").style.display = "block"
+
+            
+
+        }
+        else {
+            document.getElementById("kunci1").style.display = "block"
+            document.getElementById("alert1").style.display = "block"
+            score -= 1
+            document.getElementById("score").innerHTML = score
+            document.getElementById("notifsalah").style.display = "block"
+            
+            
+            if (score == 0) {
+                document.getElementById("soal1").style.display = "none"
+                document.getElementById("notifsalah").style.display = "none"
+                document.getElementById("notifkalah").style.display = "block"
+            }
+        
+        }
+    }
+
+
+    //soal 2//
+    function cek2() {
+        var jawaban2 = document.getElementById("jawaban2").value;
+        var jawabanbenar2 = "\x74\x72\x69\x70\x69\x74\x61\x6b\x61";
+
+        if (jawaban2 == jawabanbenar2) {
+            document.getElementById("notifbenar").style.display = "block"
+            document.getElementById("soal2").style.display = "none"
+            document.getElementById("soal3").style.display = "block"
+
+            
+
+        }
+        else {
+            document.getElementById("kunci2").style.display = "block"
+            document.getElementById("alert2").style.display = "block"
+            score -= 1
+            document.getElementById("score").innerHTML = score
+            document.getElementById("notifsalah").style.display = "block"
+            if (score == 0) {
+                document.getElementById("soal2").style.display = "none"
+                document.getElementById("notifsalah").style.display = "none"
+                document.getElementById("notifkalah").style.display = "block"
+            }
+        }
+    }
+
+
+    //soal 3//
+    function cek3() {
+        var jawaban3 = document.getElementById("jawaban3").value;
+        var jawabanbenar3 = "\x6b\x65\x72\x61\x6a\x61\x61\x6e\x20\x6d\x61\x6a\x61\x70\x61\x68\x69\x74";
+
+        if (jawaban3 == jawabanbenar3) {
+            document.getElementById("notifbenar").style.display = "block"
+            document.getElementById("soal3").style.display = "none"
+            document.getElementById("soal4").style.display = "block"
+
+            
+
+        }
+        else {
+            document.getElementById("kunci3").style.display = "block"
+            document.getElementById("alert3").style.display = "block"
+            score -= 1
+            document.getElementById("score").innerHTML = score
+            document.getElementById("notifsalah").style.display = "block"
+            if (score == 0) {
+                document.getElementById("soal3").style.display = "none"
+                document.getElementById("notifsalah").style.display = "none"
+                document.getElementById("notifkalah").style.display = "block"
+            }
+        }
+    }
+
+
+    //soal 4//
+    function cek4() {
+        var jawaban4 = document.getElementById("jawaban4").value;
+        var jawabanbenar4 = "\x70\x72\x61\x73\x61\x73\x74\x69\x20\x74\x65\x6c\x61\x67\x61\x20\x62\x61\x74\x75";
+
+        if (jawaban4 == jawabanbenar4) {
+            document.getElementById("notifbenar").style.display = "block"
+            document.getElementById("soal4").style.display = "none"
+            document.getElementById("soal5").style.display = "block"
+
+            
+
+        }
+        else {
+            document.getElementById("kunci4").style.display = "block"
+            document.getElementById("alert4").style.display = "block"
+            score -= 1
+            document.getElementById("score").innerHTML = score
+            document.getElementById("notifsalah").style.display = "block"
+            if (score == 0) {
+                document.getElementById("soal4").style.display = "none"
+                document.getElementById("notifsalah").style.display = "none"
+                document.getElementById("notifkalah").style.display = "block"
+            }
+        }
+    }
+
+
+    //soal 5//
+    function cek5() {
+        var jawaban5 = document.getElementById("jawaban5").value;
+        var jawabanbenar5 = "\x70\x72\x61\x6a\x75\x72\x69\x74\x20\x69\x6e\x64\x69\x61";
+
+        if (jawaban5 == jawabanbenar5) {
+            document.getElementById("notifbenar").style.display = "block"
+            document.getElementById("soal5").style.display = "none"
+            document.getElementById("soal6").style.display = "block"
+
+            
+
+        }
+        else {
+            document.getElementById("kunci5").style.display = "block"
+            document.getElementById("alert5").style.display = "block"
+            score -= 1
+            document.getElementById("score").innerHTML = score
+            document.getElementById("notifsalah").style.display = "block"
+            if (score == 0) {
+                document.getElementById("soal5").style.display = "none"
+                document.getElementById("notifsalah").style.display = "none"
+                document.getElementById("notifkalah").style.display = "block"
+            }
+        }
+    }
+
+
+    //soal 6//
+    function cek6() {
+        var jawaban6 = document.getElementById("jawaban6").value;
+        var jawabanbenar6 = "\x70\x72\x61\x73\x61\x73\x74\x69\x20\x6a\x61\x6d\x62\x75";
+
+        if (jawaban6 == jawabanbenar6) {
+            document.getElementById("notifbenar").style.display = "block"
+            document.getElementById("soal6").style.display = "none"
+            document.getElementById("soal7").style.display = "block"
+
+            
+
+        }
+        else {
+            document.getElementById("kunci6").style.display = "block"
+            document.getElementById("alert6").style.display = "block"
+            score -= 1
+            document.getElementById("score").innerHTML = score
+            document.getElementById("notifsalah").style.display = "block"
+            if (score == 0) {
+                document.getElementById("soal6").style.display = "none"
+                document.getElementById("notifsalah").style.display = "none"
+                document.getElementById("notifkalah").style.display = "block"
+            }
+        }
+    }
+
+
+    //soal 7//
+    function cek7() {
+        var jawaban7 = document.getElementById("jawaban7").value;
+        var jawabanbenar7 = "\x6b\x65\x72\x61\x6a\x61\x61\x6e\x20\x73\x69\x6e\x67\x61\x73\x61\x72\x69";
+
+        if (jawaban7 == jawabanbenar7) {
+            document.getElementById("notifbenar").style.display = "block"
+            document.getElementById("soal7").style.display = "none"
+            document.getElementById("soal8").style.display = "block"
+
+            
+
+        }
+        else {
+            document.getElementById("kunci7").style.display = "block"
+            document.getElementById("alert7").style.display = "block"
+            score -= 1
+            document.getElementById("score").innerHTML = score
+            document.getElementById("notifsalah").style.display = "block"
+            if (score == 0) {
+                document.getElementById("soal7").style.display = "none"
+                document.getElementById("notifsalah").style.display = "none"
+                document.getElementById("notifkalah").style.display = "block"
+            }
+        }
+    }
+
+
+    //soal 8//
+    function cek8() {
+        var jawaban8 = document.getElementById("jawaban8").value;
+        var jawabanbenar8 = "\x6d\x75\x61\x72\x61\x20\x74\x61\x6b\x75\x73";
+
+        if (jawaban8 == jawabanbenar8) {
+            document.getElementById("notifbenar").style.display = "block"
+            document.getElementById("soal8").style.display = "none"
+            document.getElementById("soal9").style.display = "block"
+
+            
+
+        }
+        else {
+            document.getElementById("kunci8").style.display = "block"
+            document.getElementById("alert8").style.display = "block"
+            score -= 1
+            document.getElementById("score").innerHTML = score
+            document.getElementById("notifsalah").style.display = "block"
+            if (score == 0) {
+                document.getElementById("soal8").style.display = "none"
+                document.getElementById("notifsalah").style.display = "none"
+                document.getElementById("notifkalah").style.display = "block"
+            }
+        }
+    }
+
+
+    //soal 9//
+    function cek9() {
+        var jawaban9 = document.getElementById("jawaban9").value;
+        var jawabanbenar9 = "\x67\x61\x6a\x61\x68\x20\x6d\x61\x64\x61";
+
+        if (jawaban9 == jawabanbenar9) {
+            document.getElementById("notifbenar").style.display = "block"
+            document.getElementById("soal9").style.display = "none"
+            document.getElementById("soal10").style.display = "block"
+
+            
+
+        }
+        else {
+            document.getElementById("kunci9").style.display = "block"
+            document.getElementById("alert9").style.display = "block"
+            score -= 1
+            document.getElementById("score").innerHTML = score
+            document.getElementById("notifsalah").style.display = "block"
+            if (score == 0) {
+                document.getElementById("soal9").style.display = "none"
+                document.getElementById("notifsalah").style.display = "none"
+                document.getElementById("notifkalah").style.display = "block"
+            }
+        }
+    }
+
+
+    //soal 10//
+    function cek10() {
+        var jawaban10 = document.getElementById("jawaban10").value;
+        var jawabanbenar10 = "\x73\x69\x77\x61\x20\x64\x65\x77\x61\x20\x70\x65\x72\x75\x73\x61\x6b";
+
+        if (jawaban10 == jawabanbenar10) {
+            document.getElementById("notifbenar").style.display = "block"
+            document.getElementById("soal10").style.display = "none"
+            document.getElementById("menang").style.display = "block"
+            document.getElementById("header").style.display = "none"
+            
+
+            
+
+        }
+        else {
+            document.getElementById("kunci10").style.display = "block"
+            document.getElementById("alert10").style.display = "block"
+            score -= 1
+            document.getElementById("score").innerHTML = score
+            document.getElementById("notifsalah").style.display = "block"
+            if (score == 0) {
+                document.getElementById("soal10").style.display = "none"
+                document.getElementById("notifsalah").style.display = "none"
+                document.getElementById("notifkalah").style.display = "block"
+            }
+        }
+    }
+</script>
+</html>
