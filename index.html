@@ -2,48 +2,81 @@
 <html>
 <head>
 	<title>hayoo</title>
+	
 	<style type="text/css">
 		body {
 			font-family: sans-serif;
 			font-size: 18px;
+			background-color: #ffb6ec;
 			text-align: center;
+			background-image: url();
+			background-position: center;
+			background-size: cover;
+			height: 100vh;
 		}
 		h1 {
 			margin-top: 50px;
 			font-size: 36px;
 			font-weight: bold;
 		}
+		img {
+			height: 350px;
+		}
 		.input{
-			padding: 10px;
-			font-size: 18px;
+			background-color: #C9A7EB;
+			font-size: 20px;
+			padding: 15px 30px;
+			font-size: 20px;
 			border: 1px solid #ccc;
-			border-radius: 4px;
-			margin-top: 20px;
+			border-radius: 10px;
+			border: 4px solid #ECC9EE;
+
+			
 		}
 		.button{
-			background-color: #2196f3;
-			color: white;
+			background-color: #C9A7EB;
+			color: black;
 			font-size: 20px;
+			font-weight: bold;
 			padding: 15px 30px;
 			border: none;
 			border-radius: 4px;
 			cursor: pointer;
 			transition: background-color 0.3s ease;
-			margin-top: 20px;
+			transition: border 0.3s ease;
+
+			border-radius: 10px;
+            border: 2px solid #ECC9EE;
+			
 		}
 		.button:hover {
-			background-color: #0d47a1;
+			background-color: #6c609d;
+			border: 2px solid #6b5a73;
+
+		}
+
+
+		.text {
+			font-weight: bold;
+			font-size: 30px;
 		}
 		.result {
 			font-weight: bold;
 			font-size: 45px;
-			margin-top: 20px;
+
+			
 		}
 		.result.true {
-			color: green;
+			color: rgb(0, 255, 0);
 		}
 		.result.false {
-			color: red;
+			color: rgb(255, 65, 65);
+		}
+
+		.sub {
+			font-weight: bold;
+			font-size: 20px;
+			color: rgba(0, 0, 0, 0.2);
 		}
 
 
@@ -56,29 +89,14 @@
 			margin-left:  30%;
 	
 			margin-right: 30%;
-	
-			box-shadow: 1px 1px 5px;
-	
-			background-color: white;
-	
-			visibility: hidden;
-	
-	}
 
-		.panelUtama{
+			box-shadow: 1px 1px 20px;
+	
+			background-color: #ffb6ec;
+	
 			visibility: hidden;
 		}
-		#utama:target .panelUtama{
-			visibility: visible;
-	
-		}
-		.panelCredit{
-			visibility: hidden;
-		}
-		#credit:target .panelCredit{
-			visibility: visible;
-	
-		}
+
 		
 		#notif:target .panelNotif{
 
@@ -89,59 +107,195 @@
 			position: relative;
 	
 			visibility: visible;
+		}
+		#notif:target .bg-color{
+			position: absolute;
+			top: 0;
+			bottom: 0;
+	        right: 0;
+			left: 0;
+			background-color: rgb(0, 0, 0,.5);
+			position: fixed;
+		}
+
+		.header {
+			margin: -10px -10px;
+			margin-top: -60px;
+			padding: 8px;
+			background-color: #9384D1;
+			text-align: left;
+			box-shadow: 1px 1px 20px;
+			position: fixed;
+			width: 100%;
+		}
+
+		.timer {
+			
+			
+			padding: 6px;
+			border-radius: 10px;
+			font-size: 30px;
+			font-weight: 500;
+			border: 6px solid #ECC9EE;
+			background-color: #C9A7EB;
+		}
+
+		.panelEndgame{
+
+			border-radius: 10px;
 	
-	}
-	#notif:target .bg-color{
+			padding: 50px;
+	
+			margin-left:  30%;
+	
+			margin-right: 30%;
 
-        position: absolute;
+			box-shadow: 1px 1px 20px;
+	
+			background-color: #FFDCB6;
+	
+			visibility: hidden;
+			transition: 0.56s;
+	
+			transform: translateY(50px);
+	
+			position: relative;
+	
+			visibility: visible;
+		}
 
-        top: 0;
+		
+	
+		.bg-colorEndgame{
+			position: fixed;
+			top: 0;
+			bottom: 0;
+	        right: 0;
+			left: 0;
+			background-color: rgb(0, 0, 0,.5);
+			
+		
+		}
 
-        bottom: 0;
+		.panelUtama {
+			padding-top: 10%;
+		}
+		.panelCredit{
+			padding-top: 10%;
+		}
 
-        right: 0;
 
-        left: 0;
+		.textA {
 
-        background-color: rgb(0, 0, 0,.5);
+			padding: 6px;
+			border-radius: 10px;
+			font-size: 30px;
+			font-weight: 500;
+		}
+		.score {
 
-}
+			padding: 6px;
+			border-radius: 10px;
+			font-size: 30px;
+			font-weight: 500;
+			border: 6px solid #ECC9EE;
+			background-color: #C9A7EB;
+		}
+		.isi {
+			padding-top: 100px;
+			
+		}
+		
 	</style>
 </head>
 <body>
+
 	<!--utama-->
+
 	<div div class="utama" id="utama">
 		<div class="panelUtama">
+			<h1>tebak gambar</h1>
 			<a href="#utama"><input type="button" class="button" onclick="mulai()" value="mulai"></a>
-			<a href="#credit"><input type="button" class="button" value="credit"></a>
+			<a href="#credit"><input type="button" class="button" onclick="credit()" value="credit"></a>
+			
 		</div>
-
 	</div>
 
+	
 	<!--credit-->
-	<div div class="credit" id="credit">
+	<div div class="credit" id="credit" style="display: none;">
 		<div class="panelCredit">
-			<a href="#utama"><input type="button" class="button" value="kembali"></a>
+			<div style="margin-top: 80px;">
+				<p class="text">Rifai Hari Nugroho</p>
+				<p class="text">Dewi Rizky Amalia</p>
+				<p class="text">Zhaskia Naysa Kirana</p>
+				<p class="text">Rizkia Imanina Hendrawan</p>
+			</div>
+			<a href="#utama"><input type="button" class="button" onclick="kembali()" value="kembali"></a>
 		</div>
 	</div>
+
+
+
 
 	<!--soal-->
 	<div class="soal" id="soal" style="display: none;">
-			<h1>tebak hayo</h1>
-	<img id="img" src="pjws.png">
-	<input type="text" id="input" class="input" placeholder="jawaban">
-	<a href="#notif"><input type="button" id="jawab" class="button" onclick="cekInput()" value="jawab"></a>
+		<div class="header">
+			<ul>
+				<a><button class="button" onclick="ulangi()">ulangi</button></a>
+				<a class="textA">waktu</a>
+				<a class="timer" id="timer">3:29</a>
+				<a class="textA">score</a>
+				<a class="score" id="score">0</a>
+				<a class="textA">soal</a>
+				<a class="score" id="urutdisplay">1/15</a>
+
+			</ul>
+		</div>
+
+		<h1>tebak hayo</h1>
+		<h1><img id="img" src="1.PNG"></h1>
+		<input type="text" id="input" class="input" placeholder="jawaban">
+		<a href="#notif"><input type="button" id="jawab" class="button" onclick="cekInput()" value="jawab"></a>
+		<p class="sub">enter untuk menjawab</p>
+	</div>
+
+	<!--finish-->
+	<div class="finish" id="finish" style="display: none;">
+		<div class="isi">
+			<h1>selesai</h1>
+			<ul>
+				<a class="textA">hasil score anda</a>
+				<a class="score" id="endScore"></a>
+			</ul>
+			<a><button class="button" onclick="ulangi()">ulangi</button></a>
+
+		</div>
+		
 	</div>
 	
 	<!--notif-->
 	<div class="notif" id="notif">
         <div class="bg-color">
 			<div class="panelNotif">
-				<div class="result" id="result"></div>
+				<p class="result" id="result"></p>
 				<a href="#utama"><input id="oke" type="button" class="button" value="Oke"></a>
+				<p class="sub">esc untuk menutup</p>
+			</div>
 		</div>
 	</div>
-</div>
+
+	<!--endgame-->
+	<div class="endgame" id="endgame" style="display: none;">
+        <div class="bg-colorEndgame">
+			<div class="panelEndgame">
+				<p class="result">waktu habis</p>
+				<input id="ulangi" type="button" class="button" onclick="ulangi()" value="ulangi">
+				<p class="sub">tekan tombol untuk mengulang</p>
+			</div>
+		</div>
+	</div>
+
 
 
 	<script type="text/javascript">
@@ -159,64 +313,181 @@
 			if(keyCode === 27) {
 			  document.getElementById("oke").click();
 			}
-		  });
-		 
+		  });		 
 
 		  function mulai() {
 			document.getElementById("soal").style.display = "block"
 			document.getElementById("utama").style.display = "none"
+			document.body.style.backgroundImage = "url()"; 
+			// Set waktu awal
+			var countDownDate = new Date().getTime() + (120) * 1000;
+	
+			// Update hitungan mundur setiap 1 detik
+			var x = setInterval(function() {
+			  // Waktu sekarang
+				var now = new Date().getTime();
+	
+			  // Selisih waktu antara sekarang dan waktu hitungan mundur
+				var distance = countDownDate - now;
+	
+			  // Hitung sisa waktu dalam menit dan detik
+			  	var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+			  	var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+	
+				  // Jika hitungan mundur selesai, buka tautan YouTube
+				if (distance < 0) {
+					clearInterval(x); // Hentikan hitungan mundur
+					timeout()
+					document.getElementById("oke").click();
+
+					// Tampilkan hitungan mundur di dalam tombol
+					document.getElementById("timer").innerHTML = "0:00";
+					}
+					else {
+						if (seconds < 10) {
+							document.getElementById("timer").innerHTML = minutes + ":0" + seconds;
+						}
+						else {
+							document.getElementById("timer").innerHTML = minutes + ":" + seconds;
+						}
+						if (seconds == 0) {
+							document.getElementById("timer").innerHTML = minutes + ":00";
+						}
+					}
+				}, 1000);
+
+		  }
+
+		  function credit() {0
+			document.getElementById("credit").style.display = "block"
+			document.getElementById("utama").style.display = "none"
 
 		  }
 		  
+		  function kembali() {
+			document.getElementById("credit").style.display = "none"
+			document.getElementById("utama").style.display = "block"
 
+		  }
+		
 		var urutsoal = 0;
+		var score = 0;
+
 		//data
 		const soal = [
-		{
-			jawaban: "pjws"
+		{//1
+			jawaban: "a"
 		},
-		{
-			gambar: "homa.png",
-			jawaban: "homa"
+		{//2
+			gambar: "2.PNG",
+			jawaban: "b"
 		},
-		{
-			gambar: "kalamiti.png",
-			jawaban: "kalamiti"
+		{//3
+			gambar: "3.PNG",
+			jawaban: "c"
 		},
-		{
-			gambar: "https://media.discordapp.net/attachments/1063469184010428448/1106576564575014953/Emu_04_st.ayaka.one.png?width=333&height=288",
-			jawaban: "cina"
+		{//4
+			gambar: "4.PNG",
+			jawaban: "d"
 		},
-		{
-			gambar: "https://media.discordapp.net/attachments/638047674033111050/1103941789704015963/1683169873416760.gif?width=495&height=385",
-			jawaban: "kurukuru"
-		}]
+		{//5
+			gambar: "5.PNG",
+			jawaban: "e"
+		},
+		{//6
+			gambar: "6.PNG",
+			jawaban: "a"
+		},
+		{//7
+			gambar: "7.PNG",
+			jawaban: "b"
+		},
+		{//8
+			gambar: "8.PNG",
+			jawaban: "c"
+		},
+		{//9
+			gambar: "9.PNG",
+			jawaban: "d"
+		},
+		{//10
+			gambar: "10.PNG",
+			jawaban: "e"
+		},
+		{//11
+			gambar: "11.PNG",
+			jawaban: "d"
+		},
+		{//12
+			gambar: "12.PNG",
+			jawaban: "e"
+		},
+		{//13
+			gambar: "13.PNG",
+			jawaban: "e"
+		},
+		{//14
+			gambar: "14.PNG",
+			jawaban: "d"
+		},
+		{//15
+			gambar: "15.PNG",
+			jawaban: "e"
+		},
+		{//16
+			gambar: "",
+			jawaban: ""
+		}
+		]
 
 		//button action
 		function cekInput() {
 			var input = document.getElementById('input').value.toLowerCase();
 			document.getElementById('input').value = "";
-			if (input === soal[0 + urutsoal]['jawaban'] ) {
+			if (input === soal[urutsoal]['jawaban'] ) {
 				document.getElementById('result').innerHTML = 'Benar';
 				document.getElementById('result').classList.add('true');
 				document.getElementById('result').classList.remove('false');
-				urutsoal += 1
-				document.getElementById('img').src = soal[0 + urutsoal]['gambar'];
+				score += 100
+				document.getElementById('score').innerHTML = score;
+				
 
-			} else {
+			}
+			else {
 				document.getElementById('result').innerHTML = 'Salah';
 				document.getElementById('result').classList.add('false');
-				docume.nt.getElementById('result').classList.remove('true');
-				tes()
+				document.getElementById('result').classList.remove('true');
 			}
+
+			urutsoal += 1
+			document.getElementById('img').src = soal[urutsoal]['gambar'];
+			document.getElementById('urutdisplay').innerHTML = urutsoal + 1 + "/15";
+
+			if (urutsoal == 15) {
+				document.getElementById("soal").style.display = "none"
+				document.getElementById("finish").style.display = "block"
+				document.getElementById('endScore').innerHTML = score;
+
+
+
+			}
+			
+
 		}
 
-		function tes() {
-			document.getElementById('result').innerHTML = 'asu';
+		function timeout() {
+			document.getElementById("endgame").style.display = "block"
+		}
+
+		function ulangi() {
+			location.reload();
+
 		}
 
 
-
+		
+		
+		
 
 	</script>
 </body>
